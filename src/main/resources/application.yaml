@@ -6,15 +6,15 @@ security:
 
 spring:
   datasource:
-    url: jdbc:sqlserver://localhost:1433;databaseName=test
+    url: jdbc:sqlserver://localhost:1433;databaseName=test001;encrypt=true;trustServerCertificate=true
     username: sa
     password: 1234
   datasource.show-sql: true
   jpa.show-sql: true
   jpa:
     hibernate:
-        ddl-auto: none
-#      ddl-auto: create-drop
+#        ddl-auto: none
+          ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.SQLServerDialect

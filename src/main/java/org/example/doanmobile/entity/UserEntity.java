@@ -4,13 +4,16 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This would be JPA managed entity or Mongo document, but for this example it's just a POJO
  */
 @Getter
 @Setter
 @Entity
-@Table(name = "userTb")
+@Table(name = "users")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +30,7 @@ public class UserEntity {
 
     @Column(name = "extrainfo")
     private String extraInfo;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<NoteEntity> note = new ArrayList<>();
 }

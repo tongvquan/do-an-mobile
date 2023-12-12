@@ -1,8 +1,8 @@
 package org.example.doanmobile.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.doanmobile.model.LoginRequest;
-import org.example.doanmobile.model.LoginResponse;
+import org.example.doanmobile.model.LoginDto;
+import org.example.doanmobile.model.LoginResponsive;
 import org.example.doanmobile.service.AuthService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +17,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public LoginResponse login(@RequestBody @Validated LoginRequest request) {
+    public LoginResponsive login(@RequestBody @Validated LoginDto request) {
         return authService.attemptLogin(request.getUserName(), request.getPassword());
     }
 }

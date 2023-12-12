@@ -1,7 +1,7 @@
 package org.example.doanmobile.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.doanmobile.model.LoginResponse;
+import org.example.doanmobile.model.LoginResponsive;
 import org.example.doanmobile.security.JwtIssuer;
 import org.example.doanmobile.security.UserPrincipal;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,7 +16,7 @@ public class AuthService {
     private final JwtIssuer jwtIssuer;
     private final AuthenticationManager authenticationManager;
 
-    public LoginResponse attemptLogin(String email, String password) {
+    public LoginResponsive attemptLogin(String email, String password) {
         var authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(email, password)
         );
@@ -29,7 +29,7 @@ public class AuthService {
                 .roles(principal.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList())
                 .build());
 
-        return LoginResponse.builder()
+        return LoginResponsive.builder()
                 .token(token)
                 .build();
     }

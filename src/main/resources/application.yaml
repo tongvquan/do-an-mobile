@@ -1,0 +1,25 @@
+
+security:
+  jwt:
+    secret-key: verysecretkeyohsosecretdamnhowlongisthispleasedontusethisinproduction
+    token-duration: 1D
+
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=test
+    username: sa
+    password: 1234
+  datasource.show-sql: true
+  jpa.show-sql: true
+  jpa:
+    hibernate:
+        ddl-auto: none
+#      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+  jta:
+    atomikos:
+      connectionfactory:
+        borrow-connection-timeout: 30000
+        ignore-session-transacted-flag: true

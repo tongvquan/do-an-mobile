@@ -6,18 +6,18 @@ security:
 
 spring:
   datasource:
-    url: jdbc:sqlserver://localhost:1433;databaseName=test001;encrypt=true;trustServerCertificate=true
-    username: sa
+    url: jdbc:mysql://localhost:3306/mobile
+    username: root
     password: 1234
   datasource.show-sql: true
   jpa.show-sql: true
   jpa:
     hibernate:
-#        ddl-auto: none
-          ddl-auto: create-drop
+      ddl-auto: none
+#      ddl-auto: create
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.SQLServerDialect
+        dialect: org.hibernate.dialect.MySQLDialect
   jta:
     atomikos:
       connectionfactory:

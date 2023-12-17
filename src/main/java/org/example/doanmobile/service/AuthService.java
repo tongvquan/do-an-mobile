@@ -16,9 +16,9 @@ public class AuthService {
     private final JwtIssuer jwtIssuer;
     private final AuthenticationManager authenticationManager;
 
-    public LoginResponsive attemptLogin(String email, String password) {
+    public LoginResponsive attemptLogin(String userName, String password) {
         var authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(email, password)
+                new UsernamePasswordAuthenticationToken(userName, password)
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
         var principal = (UserPrincipal) authentication.getPrincipal();

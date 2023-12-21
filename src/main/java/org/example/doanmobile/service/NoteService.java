@@ -28,6 +28,7 @@ public class NoteService implements INoteService {
         List<NoteDto> list = new ArrayList<>();
         for(NoteEntity noteEntity : noteRepository.findAllByUserId(userId)){
             NoteDto noteDto = new NoteDto();
+            noteDto.setId(noteEntity.getId());
             noteDto.setTitle(noteEntity.getTitle());
             noteDto.setContent(noteEntity.getContent());
             list.add(noteDto);
@@ -105,8 +106,9 @@ public class NoteService implements INoteService {
     public List<NoteDto> searchNote(String title, Long userId) {
         List<NoteDto> list = new ArrayList<NoteDto>();
         for(NoteEntity noteEntity : noteRepository.findAllByUserId(userId)){
-            if(noteEntity.getContent().equalsIgnoreCase(title)){
+            if(noteEntity.getTitle().equalsIgnoreCase(title)){
                 NoteDto noteDto = new NoteDto();
+                noteDto.setId(noteEntity.getId());
                 noteDto.setTitle(noteEntity.getTitle());
                 noteDto.setContent(noteEntity.getContent());
                 list.add(noteDto);

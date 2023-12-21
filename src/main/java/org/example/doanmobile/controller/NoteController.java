@@ -39,7 +39,7 @@ public class NoteController {
     }
 
     @PutMapping("/user/note/{noteId}")
-    public ResponseEntity<String> updateNote(@RequestBody NoteDto noteDto, @PathVariable Long noteId) {
+    public ResponseEntity<String> updateNote(@PathVariable Long noteId,@RequestBody NoteDto noteDto) {
 
         if (noteService.update(noteDto, noteId) == true) {
             return new ResponseEntity<>("Item update successfully", HttpStatus.CREATED);
